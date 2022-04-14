@@ -1,6 +1,7 @@
 <?php
   require_once(__dir__ . '/Controller.php');
   require_once('./Model/RegisterModel.php');
+  
   class Register extends Controller {
 
     public $active = 'Register'; //for highlighting the active link...
@@ -28,6 +29,7 @@
       $email = stripcslashes(strip_tags($data['email']));
       $phone = stripcslashes(strip_tags($data['phone']));
       $password = stripcslashes(strip_tags($data['password']));
+      $activation_code = rand(120000,999999);
 
       $EmailStatus = $this->registerModel->fetchUser($email)['status'];
 
@@ -54,16 +56,19 @@
         return $Error;
       }
 
-      if (strlen($password) < 7) {
-        $Error['password'] = 'Por favor, utilize uma senha forte. Precisa de mais de 7 caracteres.';
-        return $Error;
-      }
+      // ** Validação passou para o Javascript **
+      // if (strlen($password) < 7) {
+      //   $Error['password'] = 'Por favor, utilize uma senha forte. Precisa de mais de 7 caracteres.';
+      //   return $Error;
+      // }
 
       $Payload = array(
         'name' => $name,
         'email' => $email,
         'phone' => $phone,
-        'password' => password_hash($password, PASSWORD_BCRYPT)
+        'password' => password_hash($password, PASSWORD_BCRYPT),
+        'status' => false,
+        'activation_code' => $activation_code
       );
 
       $Response = $this->registerModel->createUser($Payload);
@@ -78,8 +83,15 @@
 
       $_SESSION['data'] = $Data;
       $_SESSION['auth_status'] = true;
-      header("Location: dashboard.php");
+      header("Location: verifiedpending.php");
       return true;
+    }
+
+    // Inserida validação de email
+    public function validMail(array $data)
+    {
+      $Response = $this->registerModel->checkMail($data);
+      return $Response;
     }
   }
  ?>

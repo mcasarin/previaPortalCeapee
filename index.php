@@ -1,5 +1,10 @@
 <?php require_once('./controller/Login.php'); ?>
 <?php
+  /*
+  * Fonte: https://github.com/ldtalent/stephenilori-php-pdo (Adaptado)
+  *
+  * abr2022
+  */
   $Login = new Login();
   $Response = [];
   $active = $Login->active;

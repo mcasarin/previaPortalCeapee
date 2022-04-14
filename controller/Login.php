@@ -32,14 +32,18 @@ class Login extends Controller {
 
     if (!$EmailRecords['status']) {
       if (password_verify($password, $EmailRecords['data']['password'])) {
-        //check if the remember_me was selected...
-        $Response = array(
-          'status' => true
-        );
+        // checa se o email foi validado
+        $valid = $EmailRecords['data']['status'];
+          if($valid == 1){
+          $Response = array(
+            'status' => true,
+            'valid' => $valid
+          );
 
-        $_SESSION['data'] = $EmailRecords['data'];
-        $_SESSION['auth_status'] = true;
-        header("Location: dashboard.php");
+          $_SESSION['data'] = $EmailRecords['data'];
+          $_SESSION['auth_status'] = true;
+          header("Location: dashboard.php");
+        }
       }
 
       $Response = array(

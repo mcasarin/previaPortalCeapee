@@ -13,6 +13,7 @@
     <!-- Script -->
     <script src="./assets/js/jquery.js" charset="utf-8"></script>
     <script src="./assets/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="./assets/js/valid.js" charset="utf-8"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">

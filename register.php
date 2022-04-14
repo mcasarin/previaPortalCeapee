@@ -13,7 +13,7 @@
           <?php if (isset($Response['status']) && !$Response['status']) : ?>
           <br>
           <div class="alert alert-danger" role="alert">
-            <span><B>Oops!</B> Parece que temos alguns erros.</span>
+            <span><B>Oops!</B> Verifique qual o problema encontrado no formulário.</span>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true" class="text-danger">&times;</span>
             </button>
@@ -52,14 +52,21 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
               <div class="form-group">
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Senha com no mínimo 7 caracteres" required>
-                <?php if (isset($Response['password']) && !empty($Response['password'])): ?>
-                  <small class="text-danger"><?php echo $Response['password']; ?></small>
-                <?php endif; ?>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Senha com no mínimo 7 caracteres" required onchange="passwordCaracters()">
+
+                  <small id="notSeven" class="text-danger"></small>
+
               </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
-              <button class="btn btn-md btn-primary btn-block" type="submit">Registro</button>
+              <div class="form-group">
+                <label for="inputRepeat" class="sr-only">Repeat password</label>
+                <input type="password" name="repeatPassword" id="inputRepeat" class="form-control" placeholder="Confirme a senha" required onkeyup="validRepeatEmail()">
+                <small class="text-danger" id="notConfirmed"></small>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
+              <button id="btnRegister" class="btn btn-md btn-primary btn-block" type="submit" disabled="true">Registro</button>
             </div>
             <p class="mt-5 text-center mb-3 text-muted">&copy; Etwas Informática <?php echo date('Y'); ?></p>
           </form>
