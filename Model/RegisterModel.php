@@ -47,11 +47,11 @@
         $mail = new PHPMailer;
         $mail->setLanguage('pt-br','./PHPMailer/language/');
         $mail->IsSMTP();        //Sets Mailer to send message using SMTP
-        $mail->Host = 'mail.ceapee.com.br';  //Sets the SMTP hosts of your Email hosting, this for Godaddy
+        $mail->Host = 'mail.XXXXXXXXXXXXXXXXXXX';  //Sets the SMTP hosts of your Email hosting, this for Godaddy
         $mail->Port = '465';        //Sets the default SMTP server port
         $mail->SMTPAuth = true;       //Sets SMTP authentication. Utilizes the Username and Password variables
-        $mail->Username = 'naoresponda@ceapee.com.br';     //Sets SMTP username
-        $mail->Password = 'N@pol3ao01';     //Sets SMTP password
+        $mail->Username = 'XXXXXXXXXXXXXXXXXXXXXXX';     //Sets SMTP username
+        $mail->Password = 'XXXXXXXX';     //Sets SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->setFrom('naoresponda@ceapee.com.br','CEAP-EE USP');   //Sets the From email address for the message
         $mail->AddAddress($user['email'], $user['name']);  //Adds a "To" address   
