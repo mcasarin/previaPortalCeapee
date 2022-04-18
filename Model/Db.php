@@ -2,8 +2,8 @@
   class Db {
     protected $dbName = 'portalceapee'; /** Database Name */
     protected $dbHost = 'localhost'; /** Database Host */
-    protected $dbUser = 'ceapee'; /** Database Root */
-    protected $dbPass = 'M@rcego01'; /** Databse Password */
+    protected $dbUser = 'XXXXXXXXXXX'; /** Database Root */
+    protected $dbPass = 'XXXXXXXXXXX'; /** Databse Password */
     protected $dbHandler, $dbStmt;
 
     /**
